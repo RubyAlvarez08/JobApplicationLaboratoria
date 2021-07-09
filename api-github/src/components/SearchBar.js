@@ -15,6 +15,7 @@ const SearchBar = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data)
+              
                 setData(data)
             });
     }, []);
@@ -37,7 +38,7 @@ const SearchBar = () => {
         setSearchInput(e.target.value)
     }
     const handleClick = async (e) => {
-        fetch(`https://api.github.com/users ${searchInput}`)
+        fetch(`https://api.github.com/users/${searchInput}`)
             .then(response => response.json())
             .then(data => {
                 if (data.message) {
@@ -50,7 +51,7 @@ const SearchBar = () => {
             })
     }
     return (
-        <>
+    
         <div>
             <div>
                 <input
@@ -62,24 +63,16 @@ const SearchBar = () => {
                     onClick={handleClick}
                 >Search</button>
             </div>
-            {error ? (
-                <h1>{error}</h1>
-            )
-
-                :(<div className='card'>
+             <div className='card'>
                 <img src={avatar} />
-                <span>{name}</span>
+                <div>{name}</div>
                 <span>{userName}</span>
-                <span>{followers}</span>
+                <span>{followers} </span>
                 <span>{following}</span>
                 <span>{repos}</span>
 
-            </div>)}
-            
-        </div>
-        
-       
-        </>
+            </div>
+           </div>
     );
 
 }
