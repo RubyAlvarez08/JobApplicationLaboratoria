@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import '../index.css';
 
 
 const SearchBar = () => {
@@ -12,10 +13,10 @@ const SearchBar = () => {
     const [error, setError] = useState(null);
     useEffect(() => {
         fetch('https://api.github.com/users')
-            .then(res => res.json())
+            .then(respuesta => respuesta.json())
             .then(data => {
                 console.log(data)
-              
+
                 setData(data)
             });
     }, []);
@@ -51,28 +52,35 @@ const SearchBar = () => {
             })
     }
     return (
-    
+
         <div>
-            <div>
+            <h1 className='title'>Github Users</h1>
+            <div className='Nav-search'>
                 <input
                     type='text'
-                    placeholder='Search'
+                    placeholder='User Github'
                     value={searchInput}
                     onChange={handleChange} />
                 <button
+                    className='btn-search'
                     onClick={handleClick}
                 >Search</button>
             </div>
-             <div className='card'>
-                <img src={avatar} />
-                <div>{name}</div>
-                <span>{userName}</span>
-                <span>{followers} </span>
-                <span>{following}</span>
-                <span>{repos}</span>
+            {error
+                ? <h1>{error}</h1>
+                : (<div className='card'>
+                    <img className='avatar' src={avatar} />
+                    <div className='name-pila'>{name}</div>
+                    <div className='user-name'>{userName}</div>
+                    <div className='follow'>
+                        <div className='follow-info'>{followers} Followers </div>
+                        <div className='follow-info'>{following} Following</div>
+                        <div className='follow-info'>{repos} Repos</div>
+                    </div>
+                </div>
+                )}
 
-            </div>
-           </div>
+        </div>
     );
 
 }
