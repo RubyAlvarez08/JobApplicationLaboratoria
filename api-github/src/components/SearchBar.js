@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import '../index.css';
 
 
@@ -53,7 +53,7 @@ const SearchBar = () => {
     }
     return (
 
-        <div>
+        <Fragment>
             <h1 className='title'>Github Users</h1>
             <div className='Nav-search'>
                 <input
@@ -80,7 +80,7 @@ const SearchBar = () => {
                 </div>
                 )}
 
-        </div>
+        </Fragment>
     );
 
 }
