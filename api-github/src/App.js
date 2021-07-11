@@ -21,16 +21,16 @@ function App() {
     <div className='container-grid'>
       <SearchBar />
       {!data ? 'cargando...' :
-        data.map((data, index) => {
+        data.map((data,index) => {
           return (
-                <div className='card'>
-                  <img className='avatar' src={data.avatar_url} />
+                <div className='card' key={index}>
+                  <img className='avatar'src={data.avatar_url} />
                   <div className='name-pila'>{data.login}</div>
-                  <div className='user-name'>{data.gravatar_id}</div>
+                  <div className='user-name' ></div>
                   <div className='follow'>
-                    <div>{data.followers} Followers </div>
+                    <div>{} Followers </div>
                     <div>{ } Following</div>
-                    <div >{data.repos} Repos</div>
+                    <div >{} Repos</div>
                   </div>
                 </div>
 
